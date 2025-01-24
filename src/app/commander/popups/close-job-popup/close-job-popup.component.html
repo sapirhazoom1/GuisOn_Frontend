@@ -1,0 +1,16 @@
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" [ngStyle]="{'display': isModalOpen ? 'block' : 'none'}">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Close Job?</h5>
+      </div>
+      <div class="modal-body">
+        <p>Job will be hidden from search.</p>
+        <div class="d-flex justify-content-around">
+          <button class="btn btn-close-job" (click)="close()">Close</button>
+          <button class="btn btn-back" (click)="closePopup.emit()">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

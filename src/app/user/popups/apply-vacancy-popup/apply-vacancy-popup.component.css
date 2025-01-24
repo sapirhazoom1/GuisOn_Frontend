@@ -1,0 +1,81 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.close img {
+  width: 25px;
+  height: 25px;
+}
+.custom-modal {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.upload-box {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.upload-box:hover {
+  border-color: #6c5ce7;
+}
+
+.apply-button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+  background-color: #5b4cc4;
+}
+
+.cancel-button {
+  background-color: red;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: darkred;
+}
+
+@media (max-width: 400px) {
+  .modal-backdrop{
+    transform: translateY(5%);
+  }
+}

@@ -1,0 +1,29 @@
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" [ngStyle]="{'display': isModalOpen ? 'block' : 'none'}">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="d-flex flex-column align-items-center text-dark">
+          <button class="btn transparent-btn mb-2" (click)="openUpdateJobPopup()">עדכון תפקיד</button>
+          <button class="btn transparent-btn mb-2" (click)="closeJob()">סגירת תפקיד</button>
+        </div>
+      </div>
+      <button type="button" class="btn transparent-btn mb-2" (click)="closePopup()">סגור</button>
+    </div>
+  </div>
+</div>
+
+<!-- Update Job Popup -->
+<app-update-job-popup
+  *ngIf="isUpdateJobPopupOpen"
+  [job]="job!"
+  [isModalOpen]="isUpdateJobPopupOpen"
+  (closePopupEvent)="closeUpdateJobPopup()"
+  (jobUpdated)="handleJobUpdated($event)">
+</app-update-job-popup>
+
+
+<!-- Close Job Popup Component -->
+<commander-close-job-popup
+  #popup [isModalOpen]="isCloseJobPopupOpen"
+  (closePopup)="closeCloseJobPopup()">
+</commander-close-job-popup>

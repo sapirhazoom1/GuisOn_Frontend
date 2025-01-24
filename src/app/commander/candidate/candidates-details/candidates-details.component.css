@@ -1,0 +1,153 @@
+.container {
+  margin-top: 10px;
+}
+
+.header-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image-container {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  top: 50%;
+  left: 0%;
+  z-index: 2;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.user-info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.back-button {
+  position: relative;
+  right: 0px;
+  top: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.back-button img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-button img:hover {
+  transform: scale(1.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.card {
+  margin-top: 10px;
+}
+
+main {
+  padding-top: 180px;
+}
+
+.info-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: auto;
+  width: 80%;
+  text-align: right;
+}
+
+/* Styling for the image buttons */
+.btn-image {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.button-image {
+  width: 30px;
+  height: 30px;
+}
+
+.agree-btn {
+  background-color: rgba(0, 128, 0, 0.500);
+  border-radius: 50px;
+  padding: 10px;
+  position: relative;
+  top: -15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agree-btn:hover {
+  transform: scale(1.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.reject-btn {
+  background-color: rgba(255, 0, 0, 0.500);
+  border-radius: 50px;
+  padding: 10px;
+  position: relative;
+  top: -15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reject-btn:hover {
+  transform: scale(1.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.ml-3 {
+  margin-left: 5rem;
+}
+
+.info-row {
+  animation: moveText 0.5s ease-out forwards;
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 0px;
+  }
+  main {
+    padding-top: 180px;
+  }
+  .back-button {
+    transform: translateY(-25%);
+  }
+}

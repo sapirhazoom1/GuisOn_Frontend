@@ -1,0 +1,78 @@
+<div class="container" style="min-width: 100%;">
+<!-- Search Section -->
+<div class="search-section position-fixed d-flex align-items-center" style="top: 0; left: 0; right: 0; background-color: white; padding: 10px 20px; z-index: 999;">
+  <img
+      [src]="'assets/images/on.svg'"
+      class="main-avatar"
+      onerror="this.src='assets/images/on.svg'"
+      alt="Main Image"
+      [routerLink]="'/roles'"
+      >
+  <input
+    type="text"
+    class="form-control search-input"
+    style="direction: rtl;"
+    placeholder="חיפוש תפקיד ספציפי"
+    [(ngModel)]="searchQuery"
+    (ngModelChange)="filterJobs()">
+  <i class="bi bi-search position-relative"
+    style="right: 25px; transform: translateY(20%);"></i>
+
+  <!-- Profile Dropdown -->
+  <div class="profile-dropdown position-relative ms-3" (click)="$event.stopPropagation()">
+    <img
+      [src]="candidate?.imageUrl"
+      class="avatar"
+      onerror="this.src='assets/images/on.svg'"
+      alt="Profile Image"
+      (click)="toggleProfileDropdown()"
+      style="cursor: pointer;">
+    <div class="dropdown-menu position-absolute end-0 mt-2"
+         [class.show]="isProfileDropdownOpen"
+         style="min-width: 200px;">
+         <h5 class="text-center">{{candidate?.fullName}}</h5>
+      <a class="dropdown-item d-flex align-items-center gap-2"
+         [routerLink]="'/personal-profile'"
+         (click)="isProfileDropdownOpen = false">
+        <i class="bi bi-person"></i>
+        פרופיל
+      </a>
+      <a class="dropdown-item d-flex align-items-center gap-2"
+         (click)="Logout(); isProfileDropdownOpen = false">
+        <i class="bi bi-box-arrow-right"></i>
+        התנתק
+      </a>
+    </div>
+  </div>
+</div>
+
+ <!-- Filter Section -->
+ <div class="filter-section">
+  <button class="btn btn-outline-secondary filter-button d-flex align-items-center gap-2" (click)="toggleSortOrder()">
+    <i class="bi bi-sort-down"></i>
+סינון לפי  שם
+    <i *ngIf="isSortedAscending" class="bi bi-arrow-down"></i>
+    <i *ngIf="!isSortedAscending" class="bi bi-arrow-up"></i>
+  </button>
+</div>
+
+ <!-- Title -->
+ <h1 class="h3 mb-4 text-black role-title">מאגר תפקידים</h1>
+
+ <!-- Role List -->
+ <div class="role-list mb-5">
+  <div *ngFor="let job of filteredJobs" class="card role-card mb-3 shadow-lg border-custom">
+    <div class="card-body" [routerLink]="'/job-application-details/' + job.id" (click)="selectJob(job.id)">
+      <i class="bi bi-chevron-left chevron-icon me-3"></i>
+      <div class="flex-grow-1">
+        <h6 class="card-title mb-1">{{job.jobName}}</h6>
+        <small class="text-muted">{{job.unit}}</small>
+      </div>
+      <img src="/assets/images/searchIcon.svg" alt="Search Icon" class="chat-icon" />
+    </div>
+  </div>
+</div>
+
+
+ <!-- Bottom Navigation -->
+  <app-bottom-navigation></app-bottom-navigation>

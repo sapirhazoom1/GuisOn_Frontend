@@ -1,0 +1,45 @@
+<div dir="rtl" class="modal-backdrop" *ngIf="isVisible" (click)="close()">
+  <div class="custom-modal" (click)="$event.stopPropagation()">
+    <div class="text-center">
+      <h2 class="mb-3">הגשת מועמדות לתפקיד</h2>
+      <button type="button" class="close" (click)="close()">
+        <img src="/assets/images/close.svg" alt="Close" />
+      </button>
+      <h3 class="h4 mb-2">{{job?.jobName}}</h3>
+      <p class="text-muted mb-4">{{job?.unit}}</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <p class="mb-2">לפני הגשת המועמדות מומלץ לצרף קורות חיים</p>
+        <div class="upload-box" (click)="fileInput.click()">
+          <span>{{ fileName || 'העלאת קורות חיים' }}</span>
+          <i class="bi bi-upload ms-auto"></i>
+          <input
+            #fileInput
+            type="file"
+            (change)="onFileSelected($event)"
+            accept=".pdf,.doc,.docx"
+            class="d-none"
+          >
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="additionalInfo" class="form-label">משהו נוסף לספר על עצמך?</label>
+        <textarea
+          id="additionalInfo"
+          class="form-control"
+          rows="4"
+          [(ngModel)]="additionalInfo"
+          name="additionalInfo"
+          placeholder="משהו נוסף שלא ציינת? אפשר לכתוב כאן"
+        ></textarea>
+      </div>
+
+      <button type="submit" class="apply-button">
+        להגשת מועמדות
+      </button>
+    </form>
+  </div>
+</div>

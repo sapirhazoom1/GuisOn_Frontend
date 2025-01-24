@@ -1,0 +1,121 @@
+[
+  {
+    "id": "1",
+    "fullName": "John Doe",
+    "idNumber": "316223789",
+    "dateOfBirth": "1995-06-15",
+    "age": 28,
+    "gender": "Male",
+    "profile": "Software Developer",
+    "phone": "052-6816668",
+    "email": "john.doe@example.com",
+    "address": "123 Main St, New York",
+    "experience": "5 years in software development",
+    "education": "Bachelor's in Computer Science",
+    "courses": "",
+    "languages": "Angular, JavaScript, React",
+    "interests": "Coding, Traveling, Music",
+    "personalSummary": "Passionate about coding and solving complex problems. Looking to contribute to innovative projects.",
+    "jobStatuses": {
+      "1": "preferred",
+      "2": "rejected",
+      "3": "pending"
+    },
+    "imageUrl": "https://images.generated.photos/tBc0lLQ_oGxkzUtUaN6kDhkNsupKp3IDaSSePjb8v6I/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NDE2NzU3LmpwZw.jpg"
+  },
+  {
+    "id": "2",
+    "fullName": "Jane Smith",
+    "idNumber": "316223790",
+    "dateOfBirth": "1989-02-25",
+    "age": 34,
+    "gender": "Female",
+    "profile": "Product Manager",
+    "phone": "052-6816669",
+    "email": "jane.smith@example.com",
+    "address": "456 Elm St, Los Angeles",
+    "experience": "8 years in product management",
+    "education": "Master's in Business Administration",
+    "courses": "Project Management, Agile Methodology",
+    "languages": "Python, Java, SQL",
+    "interests": "Reading, Yoga, Cooking",
+    "personalSummary": "Driven product manager with a focus on delivering impactful products to users. Looking for new opportunities.",
+    "jobStatuses": {
+      "1": "rejected",
+      "2": "preferred",
+      "3": "rejected"
+    },
+    "imageUrl": "https://images.generated.photos/NBcsqRViLwQujuMWRiJZsbdmlRzgtJWHDeP2GQahg3c/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODk1NDY3LmpwZw.jpg"
+  },
+  {
+    "id": "3",
+    "fullName": "James Brown",
+    "idNumber": "316223791",
+    "dateOfBirth": "1983-03-10",
+    "age": 40,
+    "gender": "Male",
+    "profile": "Senior Developer",
+    "phone": "052-6816670",
+    "email": "james.brown@example.com",
+    "address": "789 Oak St, Chicago",
+    "experience": "15 years in software development",
+    "education": "Bachelor's in Software Engineering",
+    "courses": "C#, .NET, Azure",
+    "languages": "C#, .NET, JavaScript",
+    "interests": "Technology, Gaming, Hiking",
+    "personalSummary": "Experienced developer with a passion for building high-performance systems and mentoring junior developers.",
+    "jobStatuses": {
+      "1": "pending",
+      "2": "preferred",
+      "3": "preferred"
+    },
+    "imageUrl": "https://images.generated.photos/Z9tbjjPVUVuBP5R0wYxOwhplq1ZNa3jThQ3EQjfh4lY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjkwMTU4LmpwZw.jpg"
+  },
+  {
+    "id": "4",
+    "fullName": "Emily Johnson",
+    "idNumber": "316223792",
+    "dateOfBirth": "2001-11-22",
+    "age": 22,
+    "gender": "Female",
+    "profile": "UX Designer",
+    "phone": "052-6816671",
+    "email": "emily.johnson@example.com",
+    "address": "321 Pine St, San Francisco",
+    "experience": "3 years in UX design",
+    "education": "Bachelor's in Graphic Design",
+    "courses": "Figma, Sketch, User Research",
+    "languages": "HTML, CSS, JavaScript",
+    "interests": "Design, Photography, Art",
+    "personalSummary": "Creative and passionate UX designer looking to create user-centered designs. Always eager to learn and grow.",
+    "jobStatuses": {
+      "1": "pending",
+      "2": "pending",
+      "3": "rejected"
+    },
+    "imageUrl": "https://images.generated.photos/Ue6VJO_Vpht_z8CYWPXzs8tf-Ym2SkBWk32dF9DONdg/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/Nzc2MTc2LmpwZw.jpg"
+  },
+  {
+    "id": "5",
+    "fullName": "Michael Lee",
+    "idNumber": "316223793",
+    "dateOfBirth": "1993-05-14",
+    "age": 30,
+    "gender": "Male",
+    "profile": "Data Analyst",
+    "phone": "052-6816672",
+    "email": "michael.lee@example.com",
+    "address": "123 Cedar St, Boston",
+    "experience": "5 years in data analysis",
+    "education": "Master's in Data Science",
+    "courses": "SQL, Python, Tableau",
+    "languages": "Python, R, SQL",
+    "interests": "Data Science, Basketball, Traveling",
+    "personalSummary": "Data analyst with strong skills in statistics and machine learning. Looking to work with a forward-thinking company.",
+    "jobStatuses": {
+      "2": "rejected",
+      "3": "pending"
+    },
+    "imageUrl": "https://images.generated.photos/X6OMUnBl1rlOBnPgTN6LbCR8Jf81eUXbh0Bx0XTZE84/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTA0MTIyLmpwZw.jpg"
+  }
+]

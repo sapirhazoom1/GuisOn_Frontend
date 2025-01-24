@@ -1,0 +1,64 @@
+<!-- update-job-popup.component.html -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" [ngStyle]="{'display': isModalOpen ? 'block' : 'none'}">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">עדכון תפקיד</h5>
+        <button type="button" class="close" (click)="close()">
+          <img src="/assets/images/close.svg" alt="Close" />
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="jobName">שם תפקיד</label>
+            <input type="text" class="form-control" id="jobName" [(ngModel)]="job.jobName" name="jobName" required>
+          </div>
+          <div class="form-group">
+            <label for="jobAddress">מיקום</label>
+            <input type="text" class="form-control" id="jobAddress" [(ngModel)]="job.address" name="jobAddress" required>
+          </div>
+          <div class="form-group">
+            <label for="jobCategory">תחום תפקיד</label>
+            <input type="text" class="form-control" id="jobCategory" [(ngModel)]="job.jobCategory" name="jobCategory" required>
+          </div>
+          <div class="form-group">
+            <label for="jobDescription">תיאור תפקיד</label>
+            <textarea class="form-control" id="jobDescription" [(ngModel)]="job.jobDescription" name="jobDescription" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="techSkills">מערכות ושפות תוכנה</label>
+            <input type="text" class="form-control" id="techSkills" [(ngModel)]="job.techSkills" name="techSkills">
+          </div>
+          <div class="form-group">
+            <label for="education">השכלה</label>
+            <input type="text" class="form-control" id="education" [(ngModel)]="job.education" name="education">
+          </div>
+
+          <div *ngFor="let question of job.commonQuestions; let i = index; trackBy: trackByIndex">
+            <div class="form-group">
+              <label for="commonQuestion">שאלה {{ i + 1 }}</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="job.commonQuestions[i]"
+                name="commonQuestion{{i}}"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="commonAnswer">תשובה {{ i + 1 }}</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="job.commonAnswers[i]"
+                name="commonAnswer{{i}}"
+                required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">שמור</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

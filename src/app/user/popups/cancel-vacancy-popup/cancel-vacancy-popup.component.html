@@ -1,0 +1,28 @@
+<div class="modal-overlay" *ngIf="isVisible">
+  <div class="modal-container">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="assets/images/sendArrow.svg" alt="Send Arrow" class="modal-icon">
+
+        <!-- Confirmation View -->
+        <div class="message-container" *ngIf="isConfirmationView">
+          <p class="message-title">מועמדות התבטלה</p>
+          <p class="message-subtitle">העדכון יישלח לגורמים הרלוונטיים </p>
+          <button class="close-button" (click)="onClose()">סגור</button>
+        </div>
+
+        <!-- Initial View -->
+        <div *ngIf="!isConfirmationView">
+          <div class="message-container">
+            <p class="message-title">האם אתה בטוח שברצונך לבטל את המועמדות שלך?</p>
+            <p class="message-subtitle">לא ניתן לבטל פעולה זו</p>
+          </div>
+          <div class="button-container">
+            <button class="cancel-button" (click)="onCancel()">כן</button>
+            <button class="close-button" (click)="onClose()">לא</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

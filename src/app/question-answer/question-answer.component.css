@@ -1,0 +1,36 @@
+.header-text {
+  padding: 50px;
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 0px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-text h1, .header-text h2 {
+  margin: 0;
+  padding: 0;
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.secondary-text h2, .third-text h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 200;
+}
+
+.fourth-text h2, .fourth-text h3 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button.btn {
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}

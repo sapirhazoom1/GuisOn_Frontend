@@ -1,0 +1,33 @@
+<div class="container-fluid position-relative">
+  <!-- Logout Button -->
+  <button class="icon-btn-wrapper exb-right" (click)="Logout()">
+    <i class="bi bi-box-arrow-right icon-img-extended"></i>
+    <h4 class="text-white fw-light mt-4 mb-0 exb-text">התנתק</h4>
+  </button>
+
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center full_name">{{ candidate?.fullName }}</h4>
+      <!-- Icon Buttons Container -->
+      <div class="d-flex justify-content-center align-items-center gap-5 sticky-top pt-4 mt-4">
+        <!-- New Button -->
+        <button class="icon-btn-wrapper" [routerLink]="'/create-job'">
+          <img src="/assets/images/new.svg" alt="new" class="icon-img">
+          <h4 class="text-white fw-light mt-4 mb-0">חדש</h4>
+        </button>
+
+        <!-- Closed Button -->
+        <button class="icon-btn-wrapper" [routerLink]="'/closed-jobs'">
+          <img src="/assets/images/closed.svg" alt="closed" class="icon-img">
+          <h4 class="text-white fw-light mt-4 mb-0">סגורים</h4>
+        </button>
+
+        <!-- Open Button -->
+        <button class="icon-btn-wrapper" [routerLink]="'/open-jobs'">
+          <img src="/assets/images/open.svg" alt="open" class="icon-img">
+          <h4 class="text-white fw-light mt-4 mb-0">פתוחים</h4>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
