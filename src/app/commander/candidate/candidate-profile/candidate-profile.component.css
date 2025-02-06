@@ -1,0 +1,288 @@
+body {
+  direction: rtl;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+}
+
+.bi-file-text {
+  color: #9364a8;
+}
+
+.interview-summary-name {
+  color: #9364a8;
+  border: 1px solid #9364a8;
+  border-radius: 25px;
+  white-space: wrap;
+  padding: 5px 10px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.interview-summary-name:hover {
+  background-color: #9364a8;
+  color: white;
+}
+
+.icons {
+  filter: invert(1);
+}
+
+.container {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  box-shadow: none;
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  text-align: right;
+}
+
+.card {
+  width: 100%;
+  border-radius: 15px;
+  border: none;
+  box-shadow: none;
+  background-color: white;
+  text-align: right;
+}
+
+.card-body {
+  padding: 2rem;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: none;
+  box-sizing: border-box;
+  text-align: right;
+  overflow: hidden;
+}
+
+.rounded-circle {
+  width: 80px;
+  height: 80px;
+}
+
+.profile-image-container {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 2.7%;
+  left: 90%;
+  z-index: 2;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.btn {
+  white-space: nowrap;
+  min-width: fit-content;
+  padding: 8px 16px;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  padding: 8px 24px;
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0b5ed7;
+}
+
+.card-body .bi {
+  font-size: 1.2rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 5vw, 400px);
+  text-align: right;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.d-flex {
+  text-align: right;
+}
+
+.mb-4, .mb-2 {
+  text-align: right;
+}
+
+@media (max-width: 1280px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .text-center {
+    gap: clamp(10px, 4vw, 200px);
+  }
+  .rounded-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-image-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 1025px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .text-center {
+    gap: clamp(10px, 4vw, 200px);
+  }
+  .rounded-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-image-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+@media (max-width: 821px) {
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .text-center {
+    gap: 20px;
+  }
+  .rounded-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-image-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .text-center {
+    gap: 20px;
+  }
+  .rounded-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-image-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+@media (max-width: 576px) {
+  .card-body {
+    padding: 1rem;
+  }
+
+  .text-center {
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  .rounded-circle {
+    width: 80px;
+    height: 80px;
+  }
+  .profile-image-container {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 400px) {
+  .card-body {
+    padding: 0.75rem;
+  }
+
+  .text-center {
+    gap: 10px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+  .rounded-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .profile-image-container {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    left: 0%;
+    z-index: 2;
+  }
+
+  .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: right;
+  }
+}
+

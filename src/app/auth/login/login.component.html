@@ -1,0 +1,66 @@
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+    <!-- Main Content -->
+    <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+      <!-- Header Section with Logo -->
+      <div class="d-flex align-items-center mb-5">
+        <img src="/assets/images/on.svg" alt="on" class="img-fluid me-3" style="height: 7vh; width: auto;">
+        <div class="d-flex">
+          <h1 class="d-inline fs-2 text-success mb-0">גיוס</h1>
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <div dir="rtl" class="w-100 px-3" style="max-width: 500px;">
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control form-control-lg py-3 rounded-3"
+            [class.is-invalid]="showError"
+            [(ngModel)]="username"
+            placeholder="שׁם משתמש">
+        </div>
+        <div class="mb-4">
+          <input
+            type="password"
+            class="form-control form-control-lg py-3 rounded-3"
+            [class.is-invalid]="showError"
+            [(ngModel)]="password"
+            placeholder="סיסמה">
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="showError" class="alert alert-danger text-center mb-4" role="alert">
+          שם משתמש או סיסמה שגויים
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="text-center mb-4">
+          <a href="" class="text-decoration-none fw-bold" style="color: #6B4EFF;" (click)="onForgotPasswordClick($event)">שכחת סיסמה?</a>
+        </div>
+
+        <!-- Login Button -->
+        <div class="d-grid up">
+          <button
+            class="btn btn-primary btn-lg py-3 rounded-pill position-relative"
+            style="background-color: #446BF2;"
+            (touchend)="login()"
+            (click)="login()"
+            [disabled]="isLoading">
+            <span *ngIf="!isLoading">כניסה</span>
+            <div *ngIf="isLoading" class="spinner-border" role="status">
+              <span class="sr-only"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Restore Password Popup -->
+<app-restore-password-popup
+  *ngIf="showRestorePassword"
+  (close)="showRestorePassword = false"
+  (submit)="handlePasswordReset($event)">
+</app-restore-password-popup>

@@ -1,0 +1,260 @@
+body {
+  direction: rtl;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+}
+
+.icons {
+  filter: invert(1);
+}
+
+.container {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 100%;
+  overflow: auto;
+  text-align: right;
+}
+
+.card {
+  border-radius: 15px;
+  border: none;
+  background-color: white;
+  text-align: right;
+  box-shadow: none;
+}
+
+.card-body {
+  padding: 2rem;
+  border: none;
+  box-shadow: none;
+  text-align: right;
+}
+
+.rounded-circle {
+  width: 80px;
+  height: 80px;
+}
+
+.profile-image-container {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  left: 50%;
+  z-index: 2;
+}
+
+.profile-image-resize {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.profile-image-resize:hover {
+  transform: scale(1.1);
+}
+
+/* Updated preview container */
+.profile-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Add this new class for when preview is open */
+.profile-preview.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.profile-preview img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.profile-preview.visible img {
+  transform: scale(1);
+}
+
+/* Add close button */
+.profile-preview::after {
+  content: '×';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.profile-preview::after:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  padding: 8px 24px;
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0b5ed7;
+}
+
+.card-body .bi {
+  font-size: 1.2rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 400px;
+  text-align: right;
+  margin-top: 10%;
+}
+
+.d-flex {
+  text-align: right;
+}
+
+.mb-4, .mb-2 {
+  text-align: right;
+}
+
+@media (max-width: 1280px) {
+  .rounded-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-image-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 1025px) {
+  .rounded-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-image-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+@media (max-width: 821px) {
+  .rounded-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-image-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+@media (max-width: 768px) {
+  .rounded-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-image-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+@media (max-width: 576px) {
+  .rounded-circle {
+    width: 80px;
+    height: 80px;
+  }
+  .profile-image-container {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    top: -5%;
+    left: 0%;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 400px) {
+  .rounded-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .profile-image-container {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    left: 0%;
+    z-index: 2;
+  }
+
+  .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: right;
+  }
+}

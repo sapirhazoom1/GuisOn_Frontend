@@ -1,0 +1,99 @@
+<div class="card-header text-white text-center py-4 rounded-top-4">
+  <img class="back-button" src="assets/images/back.svg" alt="Back" (click)="goBack()">
+  <h2 class="mb-0">{{ job?.jobName }}</h2>
+  <p class="mb-0">{{ job?.unit }}</p>
+</div>
+<div class="card rounded-4">
+  <div class="card-body p-4 text-right">
+    <!-- Navigation Links -->
+    <div class="d-flex justify-content-center align-items-center mb-3 text-center">
+      <a
+        href="javascript:void(0)"
+        class="fw-bold"
+        [class.active]="activeTab === 'jobRequirements'"
+        (click)="switchTab('jobRequirements')">
+        דרישות התפקיד
+      </a>
+      <span class="mx-2 fw-bold divider">|</span>
+      <a
+        href="javascript:void(0)"
+        class="fw-bold"
+        [class.active]="activeTab === 'faq'"
+        (click)="switchTab('faq')">
+        שאלות נפוצות
+      </a>
+    </div>
+
+    <!-- Job Requirements Content -->
+    <div [ngClass]="{'fade-in': activeTab === 'jobRequirements'}" *ngIf="activeTab === 'jobRequirements'">
+      <h5 class="mb-3">תיאור תפקיד</h5>
+      <p>{{ job?.jobDescription }}</p>
+
+      <div class="mb-3">
+        <h6>ניסיון תעסוקתי</h6>
+        <p>{{ job?.workExperience }}</p>
+      </div>
+
+      <div class="mb-3">
+        <h6>השכלה</h6>
+        <p>{{ job?.education }}</p>
+      </div>
+
+      <div class="mb-3">
+        <h6>קורסים והסמכות</h6>
+        <p>{{ job?.passedCourses }}</p>
+      </div>
+
+      <div class="mb-4">
+        <h6>מערכות ושפות תוכנה</h6>
+        <p>{{ job?.techSkills }}</p>
+      </div>
+
+      <div class="mb-3">
+        <h6 class="mb-1">חשוב שידעו</h6>
+        <p>{{ job?.additionalInfo }}</p>
+      </div>
+
+      <div class="button-container">
+        <button
+          class="btn"
+          [ngClass]="getButtonClass()"
+          (click)="toggleApplyCancel()">
+          {{ getButtonText() }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Frequently Asked Questions Content -->
+    <div [ngClass]="{'fade-in': activeTab === 'faq'}" *ngIf="activeTab === 'faq'">
+      <div class="mb-3 justify-content-center">
+        <!-- Questions Section -->
+        <div *ngIf="job?.commonQuestions?.length; else noQuestions" class="mb-4 text-center">
+          <div *ngFor="let question of job?.commonQuestions; let i = index">
+            <h6 class="question-title">{{question}}</h6>
+            <p class="answer-text">{{job?.commonAnswers?.[i]}}</p>
+          </div>
+        </div>
+        <!-- No Questions Available Message -->
+        <ng-template #noQuestions>
+          <div class="text-center">
+            <p>אין שאלות נפוצות זמינות לתפקיד זה.</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Apply Vacancy Popup -->
+<app-apply-vacancy-popup
+  #applyPopup
+  (applied)="onApply($event)">
+</app-apply-vacancy-popup>
+
+<!-- Cancel Vacancy Popup -->
+<app-cancel-vacancy-popup
+  #cancelPopup
+  *ngIf="isApplied"
+  (cancelled)="onCancel()">
+</app-cancel-vacancy-popup>

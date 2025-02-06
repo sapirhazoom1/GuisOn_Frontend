@@ -1,0 +1,276 @@
+.card-header {
+  background-color: var(--primary-color);
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 0.5rem;
+
+}
+
+h2 {
+  font-size: clamp(1rem, 4vw, 2rem);
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+p {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.6;
+}
+
+.candidate-box-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Candidate Box And Panel */
+.candidate-box {
+  position: relative;
+  z-index: 2;
+  background-color: #91838325;
+  border-radius: 15px;
+  min-height: 70px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: visible;
+}
+
+.candidate-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.candidate-box .candidate-text {
+  position: relative;
+  animation: moveText 1s ease-out forwards;
+}
+
+.candidate-box .ms-3 {
+  text-align: right;
+}
+
+.chevron-icon {
+  margin-left: 10px;
+  font-size: 1.5rem;
+}
+
+.back-button {
+  cursor: pointer;
+  margin-top: -2%;
+  margin-bottom: 1%;
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.d-flex.align-items-center.w-100.p-2 {
+  position: relative;
+  z-index: 3;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+h5 {
+  font-size: 1rem;
+  color: #000;
+}
+
+/* Profile Image Circle */
+.profile-image-container {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Background image */
+.position-fixed {
+  z-index: -1;
+}
+
+.button-like-text {
+  position: relative;
+  z-index: 100;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 4px 5px;
+  max-width: 100px;
+  background-color: transparent;
+  color: #446BF2;
+  border: 2px solid #446BF2;
+  text-align: center;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.button-like-text:hover {
+  background-color: #3658a1;
+  color: white;
+}
+
+/* Preferred Candidate Interview Click */
+.button-like-text.for-summary {
+  position: relative;
+  z-index: 100;
+  display: inline-block;
+  margin-top: 5px;
+  padding: 4px 5px;
+  max-width: 100px;
+  background-color: transparent;
+  color: #9364a8;
+  text-align: center;
+  border: 2px solid #9364a8;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.button-like-text.for-summary:hover {
+  background-color: #9364a8;
+  color: white;
+}
+
+
+.button-like-text.for-summary {
+  z-index: 1001;
+}
+
+.app-interview-summary-popup {
+  z-index: 1002 !important;
+}
+
+.app-interview-summary-popup {
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-link.active {
+  border-color: #0d6efd !important;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+@media (max-width: 1025px) {
+  .nav {
+    margin-top: 15%;
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+}
+@media (max-width: 821px) {
+  .nav {
+    margin-top: 10%;
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    margin-top: 10%;
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav {
+    margin-top: 5%;
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav {
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+
+  .nav-item {
+    font-size: 10px !important;
+    padding: 0 2px;
+    width: auto;
+  }
+
+  .nav-link {
+    font-size: 10px !important;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .candidate-box {
+    min-height: 60px;
+  }
+
+  .profile-image-container {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 376px) {
+  .nav {
+    margin-top: -3% !important;
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 345px) {
+  .nav {
+    margin-top: 10% !important;
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
+}

@@ -1,0 +1,95 @@
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  display: none;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  transform: translateY(70px);
+}
+
+.modal-dialog {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border: none;
+}
+
+.modal-icon {
+  width: 84px;
+  height: 84px;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 15px;
+  color: black;
+  border: none;
+  border-radius: 15px;
+}
+
+.modal-header {
+  background-color: #f8f8f800;
+  border-bottom: 1px solid #ccc;
+}
+
+.modal-header .modal-title {
+  color: black;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.btn {
+  width: 120px;
+  min-width: 120px;
+  font-size: 1rem;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.btn:last-child {
+  margin-right: 0;
+}
+
+.btn-close-job {
+  background-color: navy;
+  color: white;
+  border: 1px solid navy;
+}
+
+.btn-close-job:hover {
+  background-color: #1a1a8b;
+}
+
+.btn-back {
+  background-color: rgba(128, 128, 128, 0.212);
+  color: white;
+  border: 1px solid rgba(128, 128, 128, 0.26);
+}
+
+.btn-back:hover {
+  background-color: #5e5e5e;
+}
+
+@media (max-width: 400px) {
+  .modal.show {
+    transform: translateY(180px);
+  }
+  .modal-content {
+    background-color: lightgray;
+  }
+}

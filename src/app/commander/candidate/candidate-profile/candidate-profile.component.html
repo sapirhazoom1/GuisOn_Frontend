@@ -1,0 +1,118 @@
+<div class="container py-4" style="font-family: 'Heebo', sans-serif;">
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+      <!-- Header with Profile -->
+      <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h2 class="mb-0">{{ candidate?.fullName }}</h2>
+          <small class="text-muted">{{ candidate?.idNumber }}</small>
+        </div>
+        <div class="rounded-circle overflow-hidden">
+          <div class="profile-image-container">
+            <img class="cursor-pointer"
+             [src]="candidate?.imageUrl"
+                 alt="Profile picture"
+                 class="profile-image"
+                 onerror="this.src='assets/images/on.svg'"
+                 (click)="goBack()">
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Info -->
+      <div class="mb-4">
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.dateOfBirth }} ({{ candidate?.age }})</span>
+          <img src="assets/images/cake.svg" alt="Cake" class="ms-2 icons" style="width: 20px; height: 20px;">
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+            <span>{{ candidate?.gender === 'Male' ? 'זכר' : 'נקבה' }}</span>
+          <img src="assets/images/unisex.svg" alt="Gender" class="ms-2 icons" style="width: 20px; height: 20px;">
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.profile }}</span>
+          <img src="assets/images/workprofile.svg" alt="Profile" class="ms-2" style="width: 20px; height: 20px;">
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="mb-4">
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.phone }}</span>
+          <i class="bi bi-telephone ms-2"></i>
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.email }}</span>
+          <i class="bi bi-envelope ms-2"></i>
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.address }}</span>
+          <i class="bi bi-house ms-2"></i>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="mb-4">
+        <div class="mb-4">
+          <h6 class="mb-2">ניסיון תעסוקתי</h6>
+          <p class="text-muted">
+            {{ candidate?.experience }}
+          </p>
+        </div>
+        <div class="mb-4">
+          <h6 class="mb-2">השכלה</h6>
+          <p class="text-muted">
+            {{ candidate?.education }}
+          </p>
+        </div>
+        <div class="mb-4">
+          <h6 class="mb-2" >הכשרות וקורסים</h6>
+          <p class="text-muted">
+            {{ candidate?.courses }}
+          </p>
+        </div>
+        <div class="mb-4">
+          <h6 class="mb-2">תחומי עניין</h6>
+          <p class="text-muted">
+            {{ candidate?.interests }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Personal Description -->
+      <div class="mb-4">
+        <h6 class="mb-2">תקציר אישי</h6>
+        <p class="text-muted">
+          {{ candidate?.personalSummary }}
+        </p>
+      </div>
+
+      <!-- Attached Files -->
+      <div class="mb-4" style="cursor: pointer;">
+        <h6 class="d-flex align-items-center justify-content-end text-primary" (click)="downloadPdf()">
+          קבצים מצורפים
+          <i class="bi bi-paperclip ms-2"></i>
+        </h6>
+        <div class="d-flex align-items-center justify-content-end text-primary" (click)="openInterviewSummary()">
+          <span class="interview-summary-name">סיכום ראיון - {{ candidate?.fullName }}</span>
+          <i class="bi bi-file-text ms-2"></i>
+        </div>
+      </div>
+
+      <!-- Save Button -->
+      <div class="text-center">
+        <button class="btn btn-primary px-5">שמור</button>
+        <button class="btn btn-secondary px-5" (click)="goBack()">אחורה</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-interview-summary-popup
+  *ngIf="showInterviewPopup"
+  [jobId]="jobId!"
+  [volunteerId]="candidate?.id!"
+  [existingInterview]="interview"
+  (close)="showInterviewPopup = false"
+  (save)="handleInterviewSave($event)">
+</app-interview-summary-popup>

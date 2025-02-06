@@ -1,0 +1,55 @@
+<!-- Control Icons Component -->
+<control-icons style="display: block;"></control-icons>
+
+<!-- No Jobs Message -->
+<div *ngIf="jobs.length === 0" class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center mb-5">
+      <h2 class="fw-bold mb-3">אין לך תפקידים פתוחים</h2>
+      <h3 class="mb-2">הגדירו תפקיד שצריך לאייש ואנחנו נפרסם אותו</h3>
+      <h3 class="mb-2">למתנדבים.</h3>
+      <h3 class="mb-4">כאשר יוגשו מועמדויות לתפקיד תוכל לראות אותן פה.</h3>
+
+      <!-- Create Button -->
+     <div class="d-flex justify-content-center">
+       <button class="btn btn-dark rounded-pill px-5 py-3 create-btn" (click)="createJob()">
+         יצירת התפקיד
+        </button>
+     </div>
+    </div>
+  </div>
+</div>
+
+<!-- Job Listings -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <div class="job-box-container">
+        <div *ngFor="let job of jobs"
+             class="job-box mb-3 position-relative cursor-pointer"
+             (click)="navigateToJob(job.id)">
+          <div class="d-flex align-items-center w-100 p-2">
+            <!-- Circle with Text -->
+            <div class="position-relative circle-wrapper">
+              <img src="/assets/images/circle.svg" alt="circle" class="rounded-circle">
+              <span class="position-absolute top-50 start-50 translate-middle circle-text move-left-circle-counter">
+                {{ getPreferredAndRejectedCountForJob(job.id) }} <br> <span class="move-left-circle-text">אוישו</span>
+              </span>
+            </div>
+
+            <!-- Job Details -->
+            <div class="ms-3 d-flex flex-column flex-grow-1">
+              <h4 class="mb-1">{{ job.jobName }}</h4>
+              <h5 class="mb-0">{{ getPreferredCountForJob(job.id) }} מועמדים {{  getTotalCandidatesCountForJob(job.id) }} | מתאימים</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Background Image Component -->
+<div class="position-fixed bottom-0 start-0 w-100">
+  <image-component></image-component>
+</div>

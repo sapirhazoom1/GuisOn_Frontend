@@ -1,0 +1,49 @@
+<div class="card-header text-white text-center py-4 rounded-top-4">
+  <h2 class="mb-0">{{ job?.jobName }}</h2>
+  <p class="mb-0">{{ job?.unit }}</p>
+  <h4 class="mb-0">Preferred {{ preferredCandidatesCount }}</h4>
+</div>
+<div class="card rounded-4">
+  <div class="card-body p-4 text-right">
+    <!-- Navigation Links -->
+    <div class="d-flex justify-content-center align-items-center mb-3 text-center">
+      <a class="fw-bold">דרישות התפקיד </a>
+    </div>
+
+    <!-- Job Requirements Content -->
+    <div>
+      <h5 class="mb-3">תיאור תפקיד</h5>
+      <p>{{ job?.jobDescription }}</p>
+
+      <div class="mb-3">
+        <h6 class="mb-1">חשוב לדעת</h6>
+        <p>{{ job?.additionalInfo }}</p>
+      </div>
+
+      <div class="mb-3">
+        <h6>ניסיון תעסוקתי</h6>
+        <p>{{ job?.workExperience }}</p>
+      </div>
+
+      <div class="mb-3">
+        <h6>השכלה</h6>
+        <p>{{ job?.education }}</p>
+      </div>
+
+      <div class="mb-3">
+        <h6>קורסים והסמכות</h6>
+        <p>{{ job?.passedCourses }}</p>
+      </div>
+
+      <div class="mb-4">
+        <h6>מערכות ושפות תוכנה</h6>
+        <p>{{ job?.techSkills }}</p>
+      </div>
+
+      <div class="text-center">
+        <button
+          class="btn btn-primary" (click)="goBack()">סגור</button>
+      </div>
+    </div>
+  </div>
+</div>

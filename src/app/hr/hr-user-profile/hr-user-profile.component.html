@@ -1,0 +1,94 @@
+<div class="container py-4" style="font-family: 'Heebo', sans-serif;">
+  <div class="card">
+    <div class="card-body p-4">
+      <!-- Header with Profile -->
+      <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+          <h2 class="mb-0">{{ candidate?.fullName }}</h2>
+          <small class="text-muted">{{ candidate?.idNumber }}</small>
+        </div>
+        <div class="rounded-circle overflow-hidden">
+          <div class="profile-image-container">
+            <img class="profile-image-resize"
+                 [src]="candidate?.imageUrl"
+                 alt="Profile picture"
+                 onerror="this.src='assets/images/on.svg'"
+                 (click)="openPreview($event)">
+            <div class="profile-preview"
+                 [class.visible]="isPreviewOpen"
+                 (click)="closePreview($event)">
+              <img [src]="candidate?.imageUrl"
+                   alt="Profile preview"
+                   onerror="this.src='assets/images/on.svg'">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Info -->
+      <div class="mb-4">
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.dateOfBirth }} ({{ candidate?.age }})</span>
+          <img src="assets/images/cake.svg" alt="Cake" class="ms-2 icons" style="width: 20px; height: 20px;">
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.gender === 'Male' ? 'זכר' : 'נקבה' }}</span>
+          <img src="assets/images/unisex.svg" alt="Gender" class="ms-2 icons" style="width: 20px; height: 20px;">
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.profile }}</span>
+          <img src="assets/images/workprofile.svg" alt="Profile" class="ms-2" style="width: 20px; height: 20px;">
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="mb-4">
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.phone }}</span>
+          <i class="bi bi-telephone ms-2"></i>
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.email }}</span>
+          <i class="bi bi-envelope ms-2"></i>
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <span>{{ candidate?.address }}</span>
+          <i class="bi bi-house ms-2"></i>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="mb-4">
+        <div class="mb-2">
+          <h6>ניסיון תעסוקתי</h6>
+          <p>{{ candidate?.experience }}</p>
+        </div>
+        <div class="mb-2">
+          <h6>השכלה</h6>
+          <p>{{ candidate?.education }}</p>
+        </div>
+        <div class="mb-2">
+          <h6>הכשרות וקורסים</h6>
+          <p>{{ candidate?.courses }}</p>
+        </div>
+        <div class="mb-2">
+          <h6>תחומי עניין</h6>
+          <p>{{ candidate?.interests }}</p>
+        </div>
+      </div>
+
+      <!-- Personal Description -->
+      <div class="mb-4">
+        <h6 class="mb-2">תקציר אישי</h6>
+        <p class="text-muted">
+          {{ candidate?.personalSummary }}
+        </p>
+      </div>
+
+      <!-- Save Button -->
+      <div class="text-center">
+        <button class="btn btn-secondary px-5" (click)="goBack()">אחורה</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+<div class="container py-4" style="font-family: 'Heebo', sans-serif; margin-bottom: 50px;">
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+      <!-- Header with Profile -->
+      <div class="d-flex justify-content-between align-items-start mb-4">
+        <div class="name-and-id">
+          <h2 class="mb-0">{{ candidate.fullName }}</h2>
+          <small class="text-muted">{{ candidate.idNumber }}</small>
+        </div>
+        <div class="rounded-circle overflow-hidden">
+          <div class="profile-image-container">
+            <img class="profile-image"
+                 [src]="candidate.imageUrl"
+                 alt="Profile picture"
+                 onerror="this.src='assets/images/on.svg'"
+                 (click)="openPreview($event)">
+            <div class="profile-preview" *ngIf="isPreviewOpen" (click)="closePreview($event)">
+              <img [src]="candidate.imageUrl"
+                   alt="Profile preview"
+                   onerror="this.src='assets/images/on.svg'">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Personal Info -->
+      <div class="mb-4">
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <app-date-formatter
+            [initialDate]="candidate.dateOfBirth"
+            (dateChange)="onDateOfBirthChange($event)"
+          ></app-date-formatter>
+          <img src="assets/images/cake.svg" alt="Cake" class="ms-2 icons" style="width: 20px; height: 20px;">
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <select [(ngModel)]="candidate.gender" class="form-control">
+            <option value="MALE">זכר</option>
+            <option value="FEMALE">נקבה</option>
+          </select>
+          <img src="assets/images/unisex.svg" alt="Gender" class="ms-2 icons" style="width: 20px; height: 20px;">
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <input [(ngModel)]="candidate.profile" class="form-control" placeholder="פרופיל">
+          <img src="assets/images/workprofile.svg" alt="Profile" class="ms-2" style="width: 20px; height: 20px;">
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="mb-4">
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <input [(ngModel)]="candidate.phone" class="form-control" placeholder="טלפון">
+          <i class="bi bi-telephone ms-2"></i>
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <input [(ngModel)]="candidate.email" class="form-control" placeholder="אמייל">
+          <i class="bi bi-envelope ms-2"></i>
+        </div>
+        <div class="d-flex align-items-center justify-content-end mb-2">
+          <input [(ngModel)]="candidate.address" class="form-control" placeholder="כתובת">
+          <i class="bi bi-house ms-2"></i>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="mb-4">
+        <div class="card mb-2">
+          <div class="card-body py-2 px-3">
+            <span>ניסיון תעסוקתי</span>
+            <div class="d-flex justify-content-between">
+              <input [(ngModel)]="candidate.experience" class="form-control" placeholder="ניסיון">
+            </div>
+          </div>
+        </div>
+        <div class="card mb-2">
+          <div class="card-body py-2 px-3">
+            <span>השכלה</span>
+            <div class="d-flex justify-content-between">
+              <input [(ngModel)]="candidate.education" class="form-control" placeholder="השכלה">
+            </div>
+          </div>
+        </div>
+        <div class="card mb-2">
+          <div class="card-body py-2 px-3">
+            <span>הכשרות וקורסים</span>
+            <div class="d-flex justify-content-between">
+              <input [(ngModel)]="candidate.courses" class="form-control" placeholder="קורסים">
+            </div>
+          </div>
+        </div>
+        <div class="card mb-2">
+          <div class="card-body py-2 px-3">
+            <span>תחומי עניין</span>
+            <div class="d-flex justify-content-between">
+              <input [(ngModel)]="candidate.interests" class="form-control" placeholder="תחביבים">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Description -->
+      <div class="mb-4">
+        <h6 class="mb-2 bottom-text">תקציר אישי</h6>
+        <textarea [(ngModel)]="candidate.personalSummary" class="form-control" rows="3" placeholder="תקציר אישי"></textarea>
+      </div>
+
+      <!-- Save Button -->
+      <div class="text-center">
+        <button class="btn btn-primary px-5" (click)="saveProfile()">שמור</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-bottom-navigation></app-bottom-navigation>

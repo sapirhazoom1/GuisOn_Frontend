@@ -1,0 +1,42 @@
+<div class="modal-backdrop" (click)="onBackdropClick($event)">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>סיכום ראיון</h2>
+    </div>
+
+    <form [formGroup]="interviewForm" (ngSubmit)="onSubmit()">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="summary">סיכום</label>
+          <textarea
+            id="summary"
+            formControlName="summary"
+            rows="5"
+            placeholder="הזן את סיכום הראיון כאן"
+            class="form-control">
+          </textarea>
+          <div
+            *ngIf="interviewForm.get('summary')?.invalid && interviewForm.get('summary')?.touched"
+            class="error-message">
+            שדה חובה
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="onCancel()">
+          ביטול
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="interviewForm.invalid">
+          {{existingInterview ? 'עדכון' : 'הוספה'}}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

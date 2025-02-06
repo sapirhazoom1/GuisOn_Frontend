@@ -1,0 +1,46 @@
+<div class="min-vh-100">
+  <!-- Header -->
+  <header class="text-white py-4 mt-6">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="card-header text-white text-center py-4 rounded-top-4">
+          <img class="back-button" src="assets/images/back.svg" alt="Back" (click)="goBack()">
+          <h2 class="mb-0">{{ job?.jobName }}</h2>
+          <p class="mb-0">{{ job?.unit }}</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!-- Navigation -->
+<app-job-details-bar [jobId]="jobId"></app-job-details-bar>
+
+  <!-- Main Content -->
+  <main class="container py-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <!-- Location and Candidate Count -->
+        <div class="row mb-4">
+          <div class="col-12 d-flex flex-column align-items-end gap-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-secondary">{{ job?.address }}</span>
+              <i class="bi bi-geo-alt text-secondary"></i>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-secondary">תקנים: {{ job?.positions }}</span>
+              <i class="bi bi-people text-secondary"></i>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-secondary">מצב תפקיד</span>
+              <img class="edit-button" src="/assets/images/edit.svg" alt="edit icon" (click)="openJobPopup()">
+              <span [ngClass]="isJobOpen(job!) ? 'text-success' : 'text-brown'">
+                {{ job?.status === 'OPEN' ? 'פתוח' : 'סגור' }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<commander-job-edit-popup #popup></commander-job-edit-popup>

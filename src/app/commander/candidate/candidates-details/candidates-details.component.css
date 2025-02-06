@@ -1,0 +1,257 @@
+.container {
+  margin-top: 10px;
+}
+
+.header-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Keep existing profile image container styles */
+.profile-image-container {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  top: 50%;
+  left: 0%;
+  z-index: 2;
+}
+
+.profile-image-resize {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.profile-image-resize:hover {
+  transform: scale(1.1);
+}
+
+/* Updated preview container */
+.profile-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Add this new class for when preview is open */
+.profile-preview.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.profile-preview img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.profile-preview.visible img {
+  transform: scale(1);
+}
+
+/* Add close button */
+.profile-preview::after {
+  content: '×';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.profile-preview::after:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.user-info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.back-button {
+  position: relative;
+  right: 0px;
+  top: 10px;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.back-button img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease;
+}
+
+.back-button img:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+.person-button {
+  position: relative;
+  right: 0px;
+  top: 10px;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.person-button img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease;
+}
+
+.person-button img:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+.card {
+  margin-top: 10px;
+}
+
+main {
+  padding-top: 180px;
+}
+
+.info-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: auto;
+  width: 80%;
+  text-align: right;
+}
+
+/* Styling for the image buttons */
+.btn-image {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.button-image {
+  width: 30px;
+  height: 30px;
+}
+
+.update-status-btn {
+  background-color: transparent;
+  border: 2px solid #0d6efd;
+  border-radius: 50px;
+  color: #0d6efd;
+  padding: 10px;
+  position: relative;
+  top: -15px;
+  outline: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.update-status-btn:hover {
+  background-color: #0d6efd;
+  color: white;
+  cursor: pointer;
+}
+
+
+.button-like-text.for-summary {
+  background-color: transparent;
+  border: 2px solid #9364a8;;
+  border-radius: 50px;
+  color: #9364a8;;
+  padding: 10px;
+  position: relative;
+  top: -15px;
+  outline: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button-like-text.for-summary:hover {
+  background-color: #9364a8;
+  color: white;
+  cursor: pointer;
+}
+
+.reject-btn {
+  background-color: rgba(255, 0, 0, 0.500);
+  border-radius: 50px;
+  padding: 10px;
+  position: relative;
+  top: -15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reject-btn:hover {
+  transform: scale(1.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.ml-3 {
+  margin-left: 5rem;
+}
+
+.info-row {
+  animation: moveText 0.5s ease-out forwards;
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 0px;
+  }
+  main {
+    padding-top: 180px;
+  }
+  .back-button {
+    transform: translateY(-25%);
+  }
+}

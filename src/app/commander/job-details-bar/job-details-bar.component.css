@@ -1,0 +1,51 @@
+.nav {
+  margin-top: 5%;
+  flex-wrap: nowrap;
+  gap: 2px;
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom: 2px solid #007bff !important;
+  color: #007bff !important;
+  outline: 1px solid #007bff;
+  border-radius: 2px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+@media (min-height: 1300px){
+  .nav {
+    margin-top: 15% !important;
+  }
+}
+
+@media (max-width: 1025px) {
+  .nav {
+    margin-top: 10%;
+  }
+}
+
+@media (max-width: 821px) {
+  .nav {
+    margin-top: 10%;
+  }
+}
+@media (max-width: 769px) {
+  .nav {
+    margin-top: 7%;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav {
+    margin-top: 10%;
+  }
+ }
+
+ @media (max-width: 376px) {
+  .nav {
+    margin-top: 5%;
+  }
+ }

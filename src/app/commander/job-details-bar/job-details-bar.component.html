@@ -1,0 +1,30 @@
+<nav class="border-bottom mt-6">
+  <div class="container">
+    <ul class="nav nav-tabs justify-content-center d-flex align-items-center">
+      <li class="nav-item">
+        <a
+          class="nav-link cursor-pointer"
+          [ngClass]="{ 'active text-primary': isMainActive, 'text-secondary': !isMainActive }"
+          (click)="goBack()">
+          ראשי
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link cursor-pointer"
+          [ngClass]="{ 'active text-primary': isCandidatesActive, 'text-secondary': !isCandidatesActive }"
+          (click)="goToCandidates()">
+          מועמדים
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link cursor-pointer"
+          [ngClass]="{ 'active text-primary': isPreferableActive, 'text-secondary': !isPreferableActive }"
+          (click)="gotToPreferableCandidates()">
+          מתאימים
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

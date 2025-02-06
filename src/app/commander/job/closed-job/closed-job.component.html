@@ -1,0 +1,31 @@
+<!-- Control Icons Component -->
+<control-icons style="display: block;"></control-icons>
+
+<!-- No Jobs Message -->
+<div *ngIf="jobs.length === 0" class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center mb-5">
+      <h2 class="fw-bold mb-3">אין לך תפקידים סגורים</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Job Listings -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <div class="job-box-container">
+        <div *ngFor="let job of jobs"
+             class="job-box mb-3 position-relative cursor-pointer"
+             (click)="navigateToJob(job.id)">
+          <div class="d-flex align-items-center w-100 p-2">
+            <div class="ms-3 d-flex flex-column flex-grow-1">
+              <h4 class="mb-1">{{ job.jobName }}</h4>
+              <h5 class="mb-0">{{ getPreferredCountForJob(job.id) }} מועמדים {{  getTotalCandidatesCountForJob(job.id) }} | מתאימים</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

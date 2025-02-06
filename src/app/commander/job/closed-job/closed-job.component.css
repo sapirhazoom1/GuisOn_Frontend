@@ -1,0 +1,53 @@
+.job-box {
+  background-color: #db141425;
+  border-radius: 25px;
+  min-height: 70px;
+  height: 80px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: 'Heebo', sans-serif;
+  z-index: 1;
+  padding-top: 10px;
+}
+
+
+.job-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2rem;
+  color: #000;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+h5 {
+  font-size: 1rem;
+  color: #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .job-box {
+    min-height: 60px;
+  }
+}

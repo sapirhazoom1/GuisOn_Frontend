@@ -1,0 +1,97 @@
+.create-btn {
+  background-color: #282949;
+  width: 300px;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+.create-btn:hover {
+  opacity: 0.9;
+}
+
+.job-box {
+  background-color: #5B7BFF;
+  border-radius: 25px;
+  min-height: 70px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: 'Heebo', sans-serif;
+  z-index: 1;
+}
+
+.job-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.move-left-circle-counter {
+  margin-left: -2px;
+}
+
+.move-left-circle-text {
+  margin-left: -2px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.circle-wrapper img {
+  width: 70px;
+  height: 70px;
+}
+
+.circle-text {
+  font-size: 0.7rem;
+  color: #000;
+  transform: translate(-30%, -50%) !important;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #000;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  font-family: 'Heebo', sans-serif;
+}
+
+h5 {
+  font-size: 1rem;
+  color: #000;
+  font-family: 'Heebo', sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .job-box {
+    min-height: 60px;
+  }
+
+  .circle-wrapper img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .create-btn {
+    width: 250px;
+    font-size: 1rem;
+    z-index: 999;
+  }
+}

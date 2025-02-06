@@ -1,0 +1,58 @@
+.modal {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  display: none;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  overflow-y: auto;
+}
+
+.modal::before {
+  content: '';
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+.close {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.close img {
+  width: 24px;
+  height: 24px;
+}
+
+.form-group {
+  text-align: right;
+}
+
+.form-group label {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  text-align: right;
+}
+
+.btn {
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}

@@ -1,0 +1,51 @@
+<div dir="rtl" class="popup-container">
+  <div class="popup">
+    <div class="popup-header-container">
+      <h2 class="popup-header">הוספת חייל חדש</h2>
+      <button type="button" class="close" (click)="close()">
+        <img src="/assets/images/close.svg" alt="Close" />
+      </button>
+    </div>
+
+    <form (submit)="addSoldier($event)" class="popup-form" *ngIf="!message">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="שם החייל"
+        [(ngModel)]="soldierName"
+        name="soldierName"
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="הזן תעודת זהות"
+        [(ngModel)]="soldierId"
+        name="soldierId"
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="אמייל"
+        [(ngModel)]="soldierEmail"
+        name="soldierEmail"
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="טלפון"
+        [(ngModel)]="soldierPhone"
+        name="soldierPhone"
+        required
+      />
+      <button type="submit" class="btn btn-primary">הוספה</button>
+    </form>
+
+    <div *ngIf="message" class="popup-message">
+      <p>{{ message }}</p>
+      <button (click)="close()" class="btn btn-primary">סגור</button>
+    </div>
+  </div>
+</div>

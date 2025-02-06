@@ -1,0 +1,301 @@
+<!-- Control Icons -->
+<control-icons style="display: block;"></control-icons>
+
+<!-- Progress Bar -->
+<div class="container mt-5">
+  <div class="progress rounded-pill border border-dark" style="direction: rtl;">
+    <div class="progress-bar bg-success"
+         role="progressbar"
+         [style.width]="progressNumber + '%'"
+         [attr.aria-valuenow]="progressNumber"
+         aria-valuemin="0"
+         aria-valuemax="100">
+      {{progressNumber}}%
+    </div>
+  </div>
+</div>
+
+<!-- Page 1: Basic Information -->
+<div dir="rtl" class="container mt-4" *ngIf="!isPage1Completed">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <form class="d-flex flex-column gap-3">
+        <input type="text"
+               class="form-control form-control-lg"
+               [(ngModel)]="job.jobName"
+               placeholder="שם תפקיד"
+               (input)="validateFirstPageFields()"
+               name="jobName">
+
+        <select class="form-select form-select-lg"
+                [(ngModel)]="job.jobCategory"
+                (change)="validateFirstPageFields()"
+                name="jobCategory">
+          <option value="" disabled selected>תחום תפקיד</option>
+          <option *ngFor="let jobCategory of jobCategories" [value]="jobCategory">{{ jobCategory }}</option>
+        </select>
+
+        <select class="form-select form-select-lg"
+              [(ngModel)]="job.unit"
+              (change)="validateFirstPageFields()"
+              name="unit">
+          <option value="" disabled selected>יחידה</option>
+          <option *ngFor="let jobUnit of jobUnits" [value]="jobUnit">{{ jobUnit }}</option>
+        </select>
+
+      <input class="form-control form-select-lg"
+            [(ngModel)]="job.address"
+            placeholder="מיקום"
+            (change)="validateFirstPageFields()"
+            name="address">
+
+        <input type="number"
+               class="form-control form-control-lg"
+               [(ngModel)]="job.positions"
+               placeholder="מספר תקנים"
+               (input)="validateFirstPageFields()"
+               name="positions">
+
+        <div class="d-flex gap-4 my-3">
+          <div class="form-check">
+            <input type="checkbox"
+                   class="form-check-input"
+                   [(ngModel)]="job.openBase"
+                   (change)="validateFirstPageFields()"
+                   name="openBase"
+                   id="openBase">
+            <label class="form-check-label" for="openBase">בסיס פתוח</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox"
+                   class="form-check-input"
+                   [(ngModel)]="job.closedBase"
+                   (change)="validateFirstPageFields()"
+                   name="closedBase"
+                   id="closedBase">
+            <label class="form-check-label" for="closedBase">בסיס סגור</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Page 2: תיאור תפקיד -->
+<div dir="rtl" class="container mt-4" *ngIf="isPage1Completed && !isPage2Completed">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <form class="d-flex flex-column gap-3">
+        <div class="mb-3">
+          <label class="form-label h6">תיאור תפקיד</label>
+          <textarea class="form-control"
+                    rows="4"
+                    [(ngModel)]="job.jobDescription"
+                    placeholder="הזן תיאור תפקיד ..."
+                    (input)="validateSecondPageFields()"
+                    name="jobDescription"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label h6">מה עוד חשוב שידעו</label>
+          <textarea class="form-control"
+                    rows="4"
+                    [(ngModel)]="job.additionalInfo"
+                    placeholder="הזן כל פרט שלדעתך חשוב שידעו ..."
+                    (input)="validateSecondPageFields()"
+                    name="additionalInfo"></textarea>
+        </div>
+            <!-- Input Group 1 -->
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [(ngModel)]="job.commonQuestions[0]"
+                placeholder="שאלה"
+                name="commonQuestion1">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [(ngModel)]="job.commonAnswers[0]"
+                placeholder="תשובה"
+                name="commonAnswer1">
+            </div>
+
+            <!-- Input Group 2 -->
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [(ngModel)]="job.commonQuestions[1]"
+                placeholder="שאלה"
+                name="commonQuestion2">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [(ngModel)]="job.commonAnswers[1]"
+                placeholder="תשובה"
+                name="commonAnswer2">
+            </div>
+
+            <!-- Input Group 3 -->
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [(ngModel)]="job.commonQuestions[2]"
+                placeholder="שאלה"
+                name="commonQuestion3">
+              <input
+                type="text"
+                class="form-control mb-2"
+                [(ngModel)]="job.commonAnswers[2]"
+                placeholder="תשובה"
+                name="commonAnswer3">
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Page 3: Requirements -->
+<div dir="rtl" class="container mt-4" *ngIf="isPage2Completed && !isPage3Completed">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <form class="d-flex flex-column gap-3">
+        <input type="text"
+               class="form-control form-control-lg"
+               [(ngModel)]="job.workExperience"
+               placeholder="ניסיון תעסוקתי"
+               (input)="validateThirdPageFields()"
+               name="workExperience">
+
+        <select class="form-select form-select-lg"
+               [(ngModel)]="job.education"
+               (change)="validateThirdPageFields()"
+               name="education">
+         <option value="" disabled selected>השכלה</option>
+         <option *ngFor="let jobEducation of jobEducations" [value]="jobEducation">{{ jobEducation }}</option>
+       </select>
+
+        <input type="text"
+               class="form-control form-control-lg"
+               [(ngModel)]="job.passedCourses"
+               placeholder="קורסים והסמכות"
+               (input)="validateThirdPageFields()"
+               name="passedCourses">
+
+        <input class="form-control form-select-lg"
+               [(ngModel)]="job.techSkills"
+               placeholder="מערכות ושפות תוכנה"
+               (change)="validateThirdPageFields()"
+               name="techSkills">
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Page 4: Summary -->
+<div dir="rtl" class="container mt-4" *ngIf="isPage3Completed">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="mb-4">
+            <h5 class="card-title mb-3">תפקיד חדש שלך</h5>
+            <div class="row">
+              <div class="col-md-4">
+                <p class="fw-bold mb-1">שם תפקיד:</p>
+                <p>{{ job.jobName }}</p>
+              </div>
+              <div class="col-md-4">
+                <p class="fw-bold mb-1">תחום תפקיד</p>
+                <p>{{ job.jobCategory }}</p>
+              </div>
+              <div class="col-md-4">
+                <p class="fw-bold mb-1">מספר תקנים</p>
+                <p>{{ job.positions }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h5 class="card-title mb-3">תפקיד</h5>
+            <p class="fw-bold mb-1">תיאור תפקיד:</p>
+            <p class="mb-3">{{ job.jobDescription }}</p>
+
+            <p class="fw-bold mb-1">ניסיון תעסוקתי:</p>
+            <p class="mb-3">{{ job.workExperience }}</p>
+
+            <p class="fw-bold mb-1">השכלה:</p>
+            <p class="mb-3">{{ job.education }}</p>
+
+            <p class="fw-bold mb-1">קורסים והסמכות</p>
+            <p class="mb-3">{{ job.passedCourses }}</p>
+
+            <p class="fw-bold mb-1">מערכות ושפות תוכנה</p>
+            <p>{{ job.techSkills }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation Buttons -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="d-flex justify-content-between mt-4 mb-5 px-3">
+        <!-- First Page Next Button -->
+        <button *ngIf="!isPage1Completed"
+        class="btn btn-lg px-5 rounded-pill"
+        [class.btn-primary]="isFirstFormValid"
+        [class.btn-secondary]="!isFirstFormValid"
+        [disabled]="!isFirstFormValid"
+        (click)="goToSecondPage()">
+          המשך
+        </button>
+
+        <!-- Secon Page Next Button -->
+        <button *ngIf="isPage1Completed && !isPage2Completed"
+        class="btn btn-lg px-5 rounded-pill"
+        [class.btn-primary]="isSecondFormValid"
+        [class.btn-secondary]="!isSecondFormValid"
+        [disabled]="!isSecondFormValid"
+        (click)="goToThirdPage()">
+          המשך
+        </button>
+
+        <!-- Third Page Next Button -->
+        <button *ngIf="isPage2Completed && !isPage3Completed"
+                class="btn btn-lg px-5 rounded-pill"
+                [class.btn-primary]="isThirdFormValid"
+                [class.btn-secondary]="!isThirdFormValid"
+                [disabled]="!isThirdFormValid"
+                (click)="goToFourthPage()">
+          המשך
+        </button>
+
+        <!-- Add Button -->
+        <button *ngIf="isPage3Completed"
+                class="btn btn-success btn-lg px-5 rounded-pill"
+                (click)="addJob()">
+          הוספה
+        </button>
+
+        <!-- Back Button -->
+        <button *ngIf="isPage1Completed"
+        class="btn btn-secondary btn-lg px-5 rounded-pill"
+        (click)="goBackToFirstPage()">
+          אחורה
+        </button>
+
+        <button *ngIf="!isPage1Completed"
+        class="btn btn-secondary btn-lg px-5 rounded-pill"
+        (click)="goBack()">
+          אחורה
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

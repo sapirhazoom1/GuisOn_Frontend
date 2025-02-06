@@ -1,0 +1,22 @@
+<div class="popup-overlay" *ngIf="isVisible">
+  <div class="popup-container">
+    <div class="popup-content">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="popup-actions">
+      <button class="accept-button" (click)="onAccept()">
+        קבל
+      </button>
+      <button class="reject-button" (click)="onReject()">
+        דחה
+      </button>
+
+      <br/>
+
+      <button class="close-button-bottom" (click)="onClose()">
+        סגור
+      </button>
+    </div>
+  </div>
+</div>

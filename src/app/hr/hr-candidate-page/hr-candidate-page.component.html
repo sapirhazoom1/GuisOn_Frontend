@@ -1,0 +1,111 @@
+<div class="container" style="min-width: 100%;">
+  <!-- Search Section -->
+  <div class="search-section position-fixed d-flex align-items-center" style="top: 0; left: 0; right: 0; background-color: white; padding: 10px 20px; z-index: 999;">
+    <img
+    [src]="'assets/images/on.svg'"
+    class="main-avatar"
+    onerror="this.src='assets/images/on.svg'"
+    alt="Main Image"
+    [routerLink]="'/job-roles'"
+    >
+    <input
+      type="text"
+      class="form-control search-input"
+      style="direction: rtl;"
+      placeholder="חיפוש מועמד"
+      [(ngModel)]="searchQuery"
+      (input)="filterCandidates()">
+    <i class="bi bi-search position-absolute"
+       style="right: 105px; top: 45%;"></i>
+
+    <div class="profile-dropdown position-relative ms-3" (click)="$event.stopPropagation()">
+      <img
+        [src]="currentCandidate?.imageUrl"
+        class="avatar"
+        onerror="this.src='assets/images/on.svg'"
+        alt="Profile Image"
+        (click)="toggleProfileDropdown()"
+        style="cursor: pointer;">
+      <div class="dropdown-menu position-absolute end-0 mt-2"
+           [class.show]="isProfileDropdownOpen"
+           style="min-width: 200px;">
+        <h5 class="text-center">{{currentCandidate?.fullName}}</h5>
+        <a class="dropdown-item d-flex align-items-center gap-2"
+           (click)="Logout(); isProfileDropdownOpen = false">
+          <i class="bi bi-box-arrow-right"></i>
+          התנתק
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Section -->
+  <div class="filter-section d-flex align-items-center justify-content-between">
+    <div class="filter-right">
+      <button class="btn btn-outline-secondary filter-button d-flex align-items-center gap-2"
+      (click)="toggleSortByName()">
+        <i class="bi" [ngClass]="{'bi-chevron-down': !isNameAscending, 'bi-chevron-up': isNameAscending}"></i>
+    סינון לפי  שם
+      </button>
+    </div>
+    <div class="filter-left">
+      <button
+        class="btn btn-primary d-flex align-items-center gap-2 add-candidate-btn"
+        (click)="openAddCandidatePopup()">
+        <i class="bi bi-plus"></i>
+        הוספת חייל חדש
+      </button>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <h1 class="h3 mb-4 text-black role-title">מאגר מועמדים</h1>
+
+  <!-- Role List -->
+  <div class="role-list mb-5">
+    <div *ngFor="let candidate of filteredCandidates" class="card role-card mb-3 shadow-lg border-custom">
+      <div class="card-body" (click)="selectCandidate(candidate.id, getStatusButton(candidate).text.toLowerCase())">
+        <ng-container *ngIf="!isJobSpecificList; else statusButton">
+          <i class="bi bi-chevron-left chevron-icon me-3" ></i>
+        </ng-container>
+        <ng-template #statusButton>
+          <button [class]="getStatusButton(candidate).class">
+            {{ getStatusButton(candidate).text }}
+          </button>
+        </ng-template>
+
+        <div class="flex-grow-1" [routerLink]="'/hr-candidate-profile/' + candidate.id">
+          <h6 class="card-title mb-1">{{ candidate?.fullName }}</h6>
+          <small class="text-muted">{{ candidate?.phone }}</small>
+        </div>
+        <img
+          [src]="candidate?.imageUrl"
+          class="avatar ms-3"
+          onerror="this.src='assets/images/on.svg'"
+          alt="Profile Image"
+          [routerLink]="'/hr-candidate-profile/' + candidate.id">
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <app-hr-bottom-navigation></app-hr-bottom-navigation>
+
+  <!-- Apply Candidate Popup -->
+  <app-apply-candidate-popup
+    *ngIf="isPreferredModalOpen"
+    [isModalOpen]="isPreferredModalOpen"
+    [jobName]="selectedJobName"
+    [jobUnit]="selectedJobUnit"
+    [jobId]="jobId"
+    [candidateId]="selectedCandidateId"
+    (closePopup)="closeApplyPopup()"
+    (assignmentComplete)="onAssignmentComplete($event)">
+</app-apply-candidate-popup>
+
+<app-add-new-candidate-popup
+  *ngIf="isAddCandidateModalOpen"
+  (closePopup)="closeAddCandidatePopup()"
+  (candidateAdded)="onCandidateAdded()">
+</app-add-new-candidate-popup>
+</div>

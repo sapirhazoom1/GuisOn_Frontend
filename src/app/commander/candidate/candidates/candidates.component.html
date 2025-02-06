@@ -1,0 +1,164 @@
+<div class="min-vh-100">
+  <!-- Header -->
+  <header class="text-white py-4 mt-6">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="card-header text-white text-center py-4 rounded-top-4">
+          <img class="back-button" src="assets/images/back.svg" alt="Back" (click)="goBack()">
+          <h2 class="mb-0">{{ job?.jobName }}</h2>
+          <p class="mb-0">{{ job?.unit }}</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <app-job-details-bar [jobId]="jobId"></app-job-details-bar>
+
+  <!-- No Candidates Message -->
+  <div *ngIf="isCandidatesActive && shouldShowCandidatesText()" class="container mt-5">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h3 class="fw-bold mb-3">אין לנו מועמדים בשבילך כרגע</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Preferred Candidates Message -->
+  <div *ngIf="isPreferableActive && shouldShowPreferableText()" class="container mt-5">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h3 class="fw-bold mb-3">אין לך מועמדים מובחרים כרגע</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Candidates Listings -->
+  <div class="container mt-5" dir="rtl">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="candidate-box-container">
+          <h3 *ngIf="isCandidatesActive && (candidates | filter: { status: ['pending'], jobId: this.jobId }).length > 0"
+            style="font-family: 'Heebo', sans-serif;">מועמדים לבחינה</h3>
+          <div *ngFor="let candidate of candidates | filter: { status: ['pending'], jobId: this.jobId }"
+              class="candidate-box mb-3 position-relative cursor-pointer"
+              (click)="goToCandidateDetails(candidate.id)">
+            <div class="d-flex align-items-center w-100 p-2">
+              <div class="profile-image-container">
+                <img [src]="candidate.imageUrl"
+                    alt="Profile picture"
+                    class="profile-image"
+                    onerror="this.src='assets/images/on.svg'"
+                    (click)="goToCandidateProfile(candidate.id)">
+              </div>
+              <div class="me-3 d-flex flex-column flex-grow-1 text-end">
+                <h4 class="mb-1" style="font-family: 'Heebo', sans-serif;">{{ candidate.fullName }}</h4>
+                <h5 class="mb-0" style="font-family: 'Heebo', sans-serif;">{{ candidate.age }}</h5>
+                <h5 class="mb-0" style="font-family: 'Heebo', sans-serif;">{{ candidateJobStatus(jobId, candidate) }}</h5>
+              </div>
+              <i class="bi bi-chevron-left chevron-icon"></i>
+            </div>
+          </div>
+          <h3 *ngIf="isCandidatesActive && (candidates | filter: { status: ['rejected'], jobId: this.jobId }).length > 0"
+            style="font-family: 'Heebo', sans-serif;">מועמדים שנדחו</h3>
+          <div *ngFor="let candidate of candidates | filter: { status: ['rejected'], jobId: this.jobId }"
+              class="candidate-box mb-3 position-relative cursor-pointer"
+              (click)="goToCandidateDetails(candidate.id)">
+            <div class="d-flex align-items-center w-100 p-2">
+              <div class="profile-image-container">
+                <img [src]="candidate.imageUrl"
+                    alt="Profile picture"
+                    class="profile-image"
+                    onerror="this.src='assets/images/on.svg'"
+                    (click)="goToCandidateProfile(candidate.id)">
+              </div>
+              <div class="me-3 d-flex flex-column flex-grow-1 text-end">
+                <h4 class="mb-1">{{ candidate.fullName }}</h4>
+                <h5 class="mb-0">{{ candidate.age }}</h5>
+                <h5 class="mb-0">{{ candidateJobStatus(jobId, candidate) }}</h5>
+              </div>
+              <i class="bi bi-chevron-left chevron-icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Preferable Candidates Listings -->
+<div class="container" dir="rtl">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <div class="candidate-box-container">
+        <h3 *ngIf="isPreferableActive && (candidates | filter: { status: ['preferred'], jobId: this.jobId }).length > 0">
+          מתאימים
+        </h3>
+        <div *ngFor="let candidate of candidates | filter: { status: ['preferred'], jobId: this.jobId }"
+            class="candidate-box mb-3 position-relative cursor-pointer">
+          <div class="d-flex align-items-center w-100 p-2" (click)="goToCandidateDetails(candidate.id)">
+            <div class="profile-image-container">
+              <img [src]="candidate.imageUrl"
+                  alt="Profile picture"
+                  class="profile-image"
+                  onerror="this.src='assets/images/on.svg'"
+                  (click)="goToCandidateProfile(candidate.id)">
+            </div>
+            <div class="me-3 d-flex flex-column flex-grow-1 text-end">
+              <h4 class="mb-1">{{ candidate.fullName }}</h4>
+              <h5 class="mb-0">{{ candidate.age }}</h5>
+              <h5 class="mb-0 d-flex justify-content-start align-items-center gap-2">
+                <span>{{ candidateJobStatus(jobId, candidate) }}</span>
+                <span class="button-like-text" (click)="contactCandidate(candidate.id); $event.stopPropagation()">צור קשר</span>
+                <span *ngIf="hasInterview(candidate)" class="button-like-text for-summary" (click)="openInterviewSummary(candidate); $event.stopPropagation()">סיכום ראיון</span>
+              </h5>
+            </div>
+            <i class="bi bi-chevron-left chevron-icon"></i>
+          </div>
+        </div>
+
+        <h3 *ngIf="isPreferableActive && (candidates | filter: { status: ['preferred_final'], jobId: this.jobId }).length > 0">
+         מועמדים מובחרים
+        </h3>
+        <div *ngFor="let candidate of candidates | filter: { status: ['preferred_final'], jobId: this.jobId }"
+            class="candidate-box mb-3 position-relative cursor-pointer">
+          <div class="d-flex align-items-center w-100 p-2">
+            <div class="profile-image-container">
+              <img [src]="candidate.imageUrl"
+                  alt="Profile picture"
+                  class="profile-image"
+                  onerror="this.src='assets/images/on.svg'"
+                  (click)="goToCandidateProfile(candidate.id)">
+            </div>
+            <div class="me-3 d-flex flex-column flex-grow-1 text-end">
+              <h4 class="mb-1">{{ candidate.fullName }}</h4>
+              <h5 class="mb-0">{{ candidate.age }}</h5>
+              <h5 class="mb-0 d-flex justify-content-start align-items-center gap-2">
+              <span>{{ candidateJobStatus(jobId, candidate) }}</span>
+              <span class="button-like-text" (click)="contactCandidate(candidate.id); $event.stopPropagation()">צור קשר</span>
+              <span class="button-like-text for-summary" (click)="openInterviewSummary(candidate)">סיכום ראיון</span>
+            </h5>
+            </div>
+            <i class="bi bi-chevron-left chevron-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Background Image Component -->
+<div [hidden]="!(isCandidatesActive && shouldShowCandidatesText()) && !(isPreferableActive && shouldShowPreferableText())" class="position-fixed bottom-0 start-0 w-100">
+  <image-component></image-component>
+</div>
+
+<app-interview-summary-popup
+  *ngIf="showInterviewPopup"
+  [jobId]="jobId!"
+  [volunteerId]="candidateSummary?.id!"
+  [existingInterview]="interview"
+  (close)="showInterviewPopup = false"
+  (save)="handleInterviewSave($event)">
+</app-interview-summary-popup>
+
