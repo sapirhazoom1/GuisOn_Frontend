@@ -193,7 +193,7 @@ export class InterviewSummaryComponent implements OnInit, OnDestroy {
       });
     }
   }
-
+// adasdads
   onCancel(): void {
     if (this.isInterviewScheduled) {
       this.interviewNotes = this.originalInterviewData.interviewNotes || '';
